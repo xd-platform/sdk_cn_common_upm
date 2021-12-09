@@ -58,6 +58,7 @@ extension Collection {
   @objc final public class func getSDKVersion() -> Swift.String
   @objc final public class func enableLog(enable: Swift.Bool)
   @objc final public class func setFunctionConfig(_ useSdkPaymentLimit: Swift.Bool = true, _ useSdkOnlineTimeLimit: Swift.Bool = true)
+  @objc final public class func setFunctionConfig(_ useSdkPaymentLimit: Swift.Bool = true, _ useSdkOnlineTimeLimit: Swift.Bool = true, _ showSwitchAccount: Swift.Bool = true)
   @objc final public class func getConfig(_ clinentId: Swift.String, completionHandler: ((Swift.Bool) -> Swift.Void)? = nil)
   @objc final public class func `init`(_ delegate: AntiAddictionService.AntiAddictionServiceCallback, gameIdentifier: Swift.String? = nil)
   @objc final public class func tapTokenLogin(kid: Swift.String, mackey: Swift.String, clientID: Swift.String, successHandler: ((Swift.String, Swift.String, Swift.String) -> Swift.Void)? = nil, failureHandler: ((Swift.String) -> Swift.Void)? = nil)
@@ -121,7 +122,7 @@ public struct User : Swift.Codable {
   @objc final public let bundleId: Swift.String
   @objc final public var useSdkOnlineTimeLimit: Swift.Bool
   @objc final public var useSdkPaymentLimit: Swift.Bool
-  @objc final public var showSwitchAccountButton: Swift.Bool
+  @objc final public var showSwitchAccount: Swift.Bool
   @objc final public var minorCommonDayTotalTime: Swift.Int
   @objc final public var minorHolidayTotalTime: Swift.Int
   @objc final public var guestTotalTime: Swift.Int

@@ -13,11 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 typedef NS_ENUM(NSInteger,AntiAddictionResultHandlerCode) {
-    AntiAddictionResultHandlerLoginSuccess = 500,
-    AntiAddictionResultHandlerLoginLogout = 1000,
-    AntiAddictionResultHandlerTimeLimit = 1030,
-    AntiAddictionResultHandlerOpenAlert = 1095,
-    AntiAddictionResultHandlerRealNameStop = 9002
+    AntiAddictionResultHandlerLoginSuccess  = 500,   //登录成功
+    AntiAddictionResultHandlerLoginLogout   = 1000,  //用户登出
+    AntiAddictionResultHandlerSwitchAccount = 1001,  // 切换账号
+    AntiAddictionResultHandlerTimeLimit     = 1030,  // 用户当前无法进行游戏
+    AntiAddictionResultHandlerOpenAlert     = 1095,  // 未成年允许游戏弹窗
+    AntiAddictionResultHandlerRealNameStop  = 9002   // 实名过程中点击了关闭实名窗
 };
 
 @protocol AntiAddictionDelegate <NSObject>

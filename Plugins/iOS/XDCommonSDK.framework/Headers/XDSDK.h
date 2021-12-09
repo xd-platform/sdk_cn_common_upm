@@ -58,10 +58,14 @@ typedef NS_ENUM(NSInteger,XDConfigOrientation) {
 /// 调起或跳转商店评分
 + (void)storeReview;
 
+//防沉迷上报游戏时长
++ (void)enterGame;
 
+//防沉迷停止游戏时长
++ (void)leaveGame;
 
-
-
+// 获取防沉迷玩家年龄段，-1：未实名，0：0-7岁，8：8到15岁，16：16到17对，18：成年玩家
++ (void)getAntiAddictionAgeRange;
 
 #pragma mark -- traker
 /// 跟踪用户

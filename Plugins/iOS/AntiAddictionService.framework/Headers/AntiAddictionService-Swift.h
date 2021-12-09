@@ -222,8 +222,8 @@ SWIFT_CLASS("_TtC20AntiAddictionService26AntiAddictionConfiguration")
 @property (nonatomic) BOOL useSdkOnlineTimeLimit;
 /// AAKit 支付限制开关，默认值为 true
 @property (nonatomic) BOOL useSdkPaymentLimit;
-/// AAKit 切换账号按钮是否显示
-@property (nonatomic) BOOL showSwitchAccountButton;
+/// AAKit 是否显示切换账号，默认值为true
+@property (nonatomic) BOOL showSwitchAccount;
 /// 未成年人非节假日每日总时长 单位秒
 @property (nonatomic) NSInteger minorCommonDayTotalTime;
 /// 未成年人节假日每日总时长 单位秒
@@ -286,6 +286,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) AntiAddictionConfigura
 /// \param useSdkOnlineTimeLimit 在线时长限制开关，默认值为 true
 ///
 + (void)setFunctionConfig:(BOOL)useSdkPaymentLimit :(BOOL)useSdkOnlineTimeLimit;
+/// AAKit 配置方法
+/// \param useSdkPaymentLimit 支付限制开关，默认值为 true
+///
+/// \param useSdkOnlineTimeLimit 在线时长限制开关，默认值为 true
+///
+/// \param showSwitchAccount 是否显示切换账号按钮,
+///
++ (void)setFunctionConfig:(BOOL)useSdkPaymentLimit :(BOOL)useSdkOnlineTimeLimit :(BOOL)showSwitchAccount;
 + (void)getConfig:(NSString * _Nonnull)clinentId completionHandler:(void (^ _Nullable)(BOOL))completionHandler;
 /// 初始化 SDK
 /// \param delegate 接收回调代理
@@ -617,8 +625,8 @@ SWIFT_CLASS("_TtC20AntiAddictionService26AntiAddictionConfiguration")
 @property (nonatomic) BOOL useSdkOnlineTimeLimit;
 /// AAKit 支付限制开关，默认值为 true
 @property (nonatomic) BOOL useSdkPaymentLimit;
-/// AAKit 切换账号按钮是否显示
-@property (nonatomic) BOOL showSwitchAccountButton;
+/// AAKit 是否显示切换账号，默认值为true
+@property (nonatomic) BOOL showSwitchAccount;
 /// 未成年人非节假日每日总时长 单位秒
 @property (nonatomic) NSInteger minorCommonDayTotalTime;
 /// 未成年人节假日每日总时长 单位秒
@@ -681,6 +689,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) AntiAddictionConfigura
 /// \param useSdkOnlineTimeLimit 在线时长限制开关，默认值为 true
 ///
 + (void)setFunctionConfig:(BOOL)useSdkPaymentLimit :(BOOL)useSdkOnlineTimeLimit;
+/// AAKit 配置方法
+/// \param useSdkPaymentLimit 支付限制开关，默认值为 true
+///
+/// \param useSdkOnlineTimeLimit 在线时长限制开关，默认值为 true
+///
+/// \param showSwitchAccount 是否显示切换账号按钮,
+///
++ (void)setFunctionConfig:(BOOL)useSdkPaymentLimit :(BOOL)useSdkOnlineTimeLimit :(BOOL)showSwitchAccount;
 + (void)getConfig:(NSString * _Nonnull)clinentId completionHandler:(void (^ _Nullable)(BOOL))completionHandler;
 /// 初始化 SDK
 /// \param delegate 接收回调代理
@@ -1012,8 +1028,8 @@ SWIFT_CLASS("_TtC20AntiAddictionService26AntiAddictionConfiguration")
 @property (nonatomic) BOOL useSdkOnlineTimeLimit;
 /// AAKit 支付限制开关，默认值为 true
 @property (nonatomic) BOOL useSdkPaymentLimit;
-/// AAKit 切换账号按钮是否显示
-@property (nonatomic) BOOL showSwitchAccountButton;
+/// AAKit 是否显示切换账号，默认值为true
+@property (nonatomic) BOOL showSwitchAccount;
 /// 未成年人非节假日每日总时长 单位秒
 @property (nonatomic) NSInteger minorCommonDayTotalTime;
 /// 未成年人节假日每日总时长 单位秒
@@ -1076,6 +1092,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) AntiAddictionConfigura
 /// \param useSdkOnlineTimeLimit 在线时长限制开关，默认值为 true
 ///
 + (void)setFunctionConfig:(BOOL)useSdkPaymentLimit :(BOOL)useSdkOnlineTimeLimit;
+/// AAKit 配置方法
+/// \param useSdkPaymentLimit 支付限制开关，默认值为 true
+///
+/// \param useSdkOnlineTimeLimit 在线时长限制开关，默认值为 true
+///
+/// \param showSwitchAccount 是否显示切换账号按钮,
+///
++ (void)setFunctionConfig:(BOOL)useSdkPaymentLimit :(BOOL)useSdkOnlineTimeLimit :(BOOL)showSwitchAccount;
 + (void)getConfig:(NSString * _Nonnull)clinentId completionHandler:(void (^ _Nullable)(BOOL))completionHandler;
 /// 初始化 SDK
 /// \param delegate 接收回调代理
@@ -1410,8 +1434,8 @@ SWIFT_CLASS("_TtC20AntiAddictionService26AntiAddictionConfiguration")
 @property (nonatomic) BOOL useSdkOnlineTimeLimit;
 /// AAKit 支付限制开关，默认值为 true
 @property (nonatomic) BOOL useSdkPaymentLimit;
-/// AAKit 切换账号按钮是否显示
-@property (nonatomic) BOOL showSwitchAccountButton;
+/// AAKit 是否显示切换账号，默认值为true
+@property (nonatomic) BOOL showSwitchAccount;
 /// 未成年人非节假日每日总时长 单位秒
 @property (nonatomic) NSInteger minorCommonDayTotalTime;
 /// 未成年人节假日每日总时长 单位秒
@@ -1474,6 +1498,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) AntiAddictionConfigura
 /// \param useSdkOnlineTimeLimit 在线时长限制开关，默认值为 true
 ///
 + (void)setFunctionConfig:(BOOL)useSdkPaymentLimit :(BOOL)useSdkOnlineTimeLimit;
+/// AAKit 配置方法
+/// \param useSdkPaymentLimit 支付限制开关，默认值为 true
+///
+/// \param useSdkOnlineTimeLimit 在线时长限制开关，默认值为 true
+///
+/// \param showSwitchAccount 是否显示切换账号按钮,
+///
++ (void)setFunctionConfig:(BOOL)useSdkPaymentLimit :(BOOL)useSdkOnlineTimeLimit :(BOOL)showSwitchAccount;
 + (void)getConfig:(NSString * _Nonnull)clinentId completionHandler:(void (^ _Nullable)(BOOL))completionHandler;
 /// 初始化 SDK
 /// \param delegate 接收回调代理
@@ -1805,8 +1837,8 @@ SWIFT_CLASS("_TtC20AntiAddictionService26AntiAddictionConfiguration")
 @property (nonatomic) BOOL useSdkOnlineTimeLimit;
 /// AAKit 支付限制开关，默认值为 true
 @property (nonatomic) BOOL useSdkPaymentLimit;
-/// AAKit 切换账号按钮是否显示
-@property (nonatomic) BOOL showSwitchAccountButton;
+/// AAKit 是否显示切换账号，默认值为true
+@property (nonatomic) BOOL showSwitchAccount;
 /// 未成年人非节假日每日总时长 单位秒
 @property (nonatomic) NSInteger minorCommonDayTotalTime;
 /// 未成年人节假日每日总时长 单位秒
@@ -1869,6 +1901,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) AntiAddictionConfigura
 /// \param useSdkOnlineTimeLimit 在线时长限制开关，默认值为 true
 ///
 + (void)setFunctionConfig:(BOOL)useSdkPaymentLimit :(BOOL)useSdkOnlineTimeLimit;
+/// AAKit 配置方法
+/// \param useSdkPaymentLimit 支付限制开关，默认值为 true
+///
+/// \param useSdkOnlineTimeLimit 在线时长限制开关，默认值为 true
+///
+/// \param showSwitchAccount 是否显示切换账号按钮,
+///
++ (void)setFunctionConfig:(BOOL)useSdkPaymentLimit :(BOOL)useSdkOnlineTimeLimit :(BOOL)showSwitchAccount;
 + (void)getConfig:(NSString * _Nonnull)clinentId completionHandler:(void (^ _Nullable)(BOOL))completionHandler;
 /// 初始化 SDK
 /// \param delegate 接收回调代理
