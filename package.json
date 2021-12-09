@@ -1,3 +1,15 @@
 {
-
+  "name": "com.xd.cn.common",
+  "version": "6.0.1",
+  "description": "XD-Cn Common",
+  "unity": "2018.3",
+  "license": "MIT",
+  "dependencies": {
+    "com.leancloud.realtime": "https://github.com/leancloud/csharp-sdk-upm.git#realtime-0.9.12",
+    "com.leancloud.storage": "https://github.com/leancloud/csharp-sdk-upm.git#storage-0.9.12",
+    "com.taptap.tds.bootstrap": "https://github.com/TapTap/TapBootstrap-Unity.git#3.3.1",
+    "com.taptap.tds.common": "https://github.com/TapTap/TapCommon-Unity.git#3.3.1",
+    "com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#3.3.1",
+    "com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#3.3.1"
+  }
 }
