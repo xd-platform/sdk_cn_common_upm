@@ -1,9 +1,10 @@
 {
-  "name": "com.xd.cn.common",
-  "version": "6.0.1",
+  "name": "@xd-cn/com.xd.cn.common",
+  "version": "6.0.0",
   "description": "XD-Cn Common",
   "unity": "2018.3",
   "license": "MIT",
+  "author": "guiming <suguiming@xd.com>",
   "dependencies": {
     "com.leancloud.realtime": "https://github.com/leancloud/csharp-sdk-upm.git#realtime-0.9.12",
     "com.leancloud.storage": "https://github.com/leancloud/csharp-sdk-upm.git#storage-0.9.12",
