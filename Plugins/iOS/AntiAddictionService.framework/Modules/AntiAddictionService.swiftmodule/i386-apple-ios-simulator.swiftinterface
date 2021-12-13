@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
 // swift-module-flags: -target i386-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AntiAddictionService
 import AntiAddictionAsyncHttp
 @_exported import AntiAddictionService
@@ -22,8 +22,8 @@ extension Collection {
   case openAlertTip = 1095
   case payLimitNone = 1020
   case payLimitReachLimit = 1025
-  public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
@@ -32,8 +32,8 @@ extension Collection {
   case success = 0
   case verifying = 1
   case fail = 2
-  public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
@@ -44,8 +44,8 @@ extension Collection {
   case teen = 8
   case young = 16
   case adult = 18
-  public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
@@ -112,8 +112,8 @@ open class Hashids_<T> : AntiAddictionService.HashidsGenerator where T : Swift.U
   @objc deinit
 }
 public struct User : Swift.Codable {
-  public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers final public class AntiAddictionConfiguration : ObjectiveC.NSObject {
   @objc final public var enableLog: Swift.Bool
@@ -146,26 +146,26 @@ public struct User : Swift.Codable {
   @objc deinit
 }
 public struct PlayTimeCheckResult : Swift.Codable {
-  public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public enum TipType {
   case timeLimitAlert
   case payLimitAlert
   public static func == (a: AntiAddictionService.TipType, b: AntiAddictionService.TipType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 public enum AlertType {
   case timeLimitAlert
   case payLimitAlert
   public static func == (a: AntiAddictionService.AlertType, b: AntiAddictionService.AlertType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 public class SwiftTimer {
   public var isRunning: Swift.Bool
@@ -218,10 +218,10 @@ public class Reachability {
       get
     }
     public static func == (a: AntiAddictionService.Reachability.NetworkStatus, b: AntiAddictionService.Reachability.NetworkStatus) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum Connection : Swift.CustomStringConvertible {
     @available(*, deprecated, renamed: "unavailable")
@@ -231,10 +231,10 @@ public class Reachability {
       get
     }
     public static func == (a: AntiAddictionService.Reachability.Connection, b: AntiAddictionService.Reachability.Connection) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public var whenReachable: AntiAddictionService.Reachability.NetworkReachable?
   public var whenUnreachable: AntiAddictionService.Reachability.NetworkUnreachable?
