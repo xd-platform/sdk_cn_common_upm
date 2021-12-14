@@ -54,4 +54,14 @@ namespace XD.Cn.Common{
         UserStateChangeCodeBindSuccess    = 9,
         UserStateChangeCodeUnBindSuccess  = 10
     }
+    
+    // 获取防沉迷玩家年龄段，-1：未实名，0：0-7岁，8：8到15岁，16：16到17对，18：成年玩家
+    public enum AgeRangeType : int{ 
+        NoRealName = -1,
+        Zero2Seven = 0,
+        Eight2Fifteen = 8,
+        Sixteen2Seventeen = 16,
+        EighteenUpper = 18,
+        OtherError = -10  //未匹配到
+    }
 }

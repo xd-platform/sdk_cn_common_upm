@@ -185,5 +185,52 @@ namespace XD.Cn.Common{
         private bool checkResultSuccess(Result result){
             return result.code == Result.RESULT_SUCCESS && !string.IsNullOrEmpty(result.content);
         }
+        
+        public void EnterGame(){
+            var command = new Command.Builder()
+                .Service(COMMON_MODULE_UNITY_BRIDGE_NAME)
+                .Method("enterGame")
+                .OnceTime(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command);
+        }
+        public void LeaveGame(){
+            var command = new Command.Builder()
+                .Service(COMMON_MODULE_UNITY_BRIDGE_NAME)
+                .Method("leaveGame")
+                .OnceTime(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command);
+        }
+        public void GetAntiAddictionAgeRange(Action<AgeRangeType> callback){
+            var command = new Command.Builder()
+                .Service(COMMON_MODULE_UNITY_BRIDGE_NAME)
+                .Method("getAntiAddictionAgeRange")
+                .Callback(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command, result => {
+                XDTool.Log("XDSDK getAntiAddictionAgeRange result: " + result.ToJSON());
+                if (!checkResultSuccess(result)){
+                    string str = result.message;
+                    AgeRangeType type = AgeRangeType.OtherError;
+                    
+                    if ("\"-1\"".Equals(str)){
+                        type = AgeRangeType.NoRealName;
+                    }else if("\"0\"".Equals(str)){
+                        type = AgeRangeType.Zero2Seven;
+                    }else if("\"8\"".Equals(str)){
+                        type = AgeRangeType.Eight2Fifteen;
+                    }else if("\"16\"".Equals(str)){
+                        type = AgeRangeType.Sixteen2Seventeen;
+                    }else if("\"18\"".Equals(str)){
+                        type = AgeRangeType.EighteenUpper;
+                    }
+                    
+                    callback(type);
+                    return;
+                }
+                callback(AgeRangeType.OtherError);
+            });
+        }
     }
 }

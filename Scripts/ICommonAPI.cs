@@ -14,5 +14,8 @@ namespace XD.Cn.Common{
         void EventCreateRole();
         void InitSDK(string clientID, int orientation);
         void SetBridgeCallBack(Action<XDCallbackType, string, string> callback);
+        void EnterGame();
+        void LeaveGame();
+        void GetAntiAddictionAgeRange(Action<AgeRangeType> callback);
     }
 }

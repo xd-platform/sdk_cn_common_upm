@@ -40,5 +40,14 @@ namespace XD.Cn.Common
         public static void SetBridgeCallBack(Action<XDCallbackType, string, string> callback){
             XDCommonImpl.GetInstance().SetBridgeCallBack(callback);
         }
+        public static void EnterGame(){
+            XDCommonImpl.GetInstance().EnterGame();
+        }
+        public static void LeaveGame(){
+            XDCommonImpl.GetInstance().LeaveGame();
+        }
+        public static void GetAntiAddictionAgeRange(Action<AgeRangeType> callback){
+            XDCommonImpl.GetInstance().GetAntiAddictionAgeRange(callback);
+        }
     }
 }
