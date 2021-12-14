@@ -210,7 +210,7 @@ namespace XD.Cn.Common{
                 .CommandBuilder();
             EngineBridge.GetInstance().CallHandler(command, result => {
                 XDTool.Log("XDSDK getAntiAddictionAgeRange result: " + result.ToJSON());
-                if (!checkResultSuccess(result)){
+                if (checkResultSuccess(result)){
                     string str = result.content;
                     AgeRangeType type = AgeRangeType.OtherError;
                     
@@ -222,14 +222,15 @@ namespace XD.Cn.Common{
                         type = AgeRangeType.Eight2Fifteen;
                     }else if("\"16\"".Equals(str)){
                         type = AgeRangeType.Sixteen2Seventeen;
-                    }else if("\"18\"".Equals(str)){
+                    }else if("\"8\"".Equals(str)){
                         type = AgeRangeType.EighteenUpper;
                     }
                     
                     callback(type);
-                    return;
+                }else{
+                    callback(AgeRangeType.OtherError);
                 }
-                callback(AgeRangeType.OtherError);
+               
             });
         }
     }
