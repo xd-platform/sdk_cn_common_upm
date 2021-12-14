@@ -211,7 +211,7 @@ namespace XD.Cn.Common{
             EngineBridge.GetInstance().CallHandler(command, result => {
                 XDTool.Log("XDSDK getAntiAddictionAgeRange result: " + result.ToJSON());
                 if (!checkResultSuccess(result)){
-                    string str = result.message;
+                    string str = result.content;
                     AgeRangeType type = AgeRangeType.OtherError;
                     
                     if ("\"-1\"".Equals(str)){
