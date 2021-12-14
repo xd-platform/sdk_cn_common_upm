@@ -65,7 +65,7 @@ typedef NS_ENUM(NSInteger,XDConfigOrientation) {
 + (void)leaveGame;
 
 // 获取防沉迷玩家年龄段，-1：未实名，0：0-7岁，8：8到15岁，16：16到17对，18：成年玩家
-+ (void)getAntiAddictionAgeRange;
++ (NSInteger)getAntiAddictionAgeRange;
 
 #pragma mark -- traker
 /// 跟踪用户
