@@ -4,6 +4,10 @@
   "description": "XD-Cn Common",
   "license": "MIT",
   "author": "guiming <suguiming@xd.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xd-platform/sdk_cn_common_upm"
+  },
   "dependencies": {
     "com.leancloud.realtime": "https://github.com/leancloud/csharp-sdk-upm.git#realtime-0.9.12",
     "com.leancloud.storage": "https://github.com/leancloud/csharp-sdk-upm.git#storage-0.9.12",
