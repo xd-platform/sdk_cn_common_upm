@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using TapTap.Bootstrap;
 using TapTap.Common;
+using UnityEditor;
 using UnityEngine;
 
 namespace XD.Cn.Common{
-    public class XDCommonImpl : ICommonAPI{
+    public class XDCommonImpl{
         private static readonly string COMMON_MODULE_UNITY_BRIDGE_NAME = "XDCoreService";
         private static volatile XDCommonImpl _instance;
         private static readonly object locker = new object();
@@ -178,14 +179,14 @@ namespace XD.Cn.Common{
                 (result) => {
                     XDTool.Log("XDSDK setCallback result: " + result.ToJSON());
                     var wrapper = new XDCallbackWrapper(result.content);
-                    callback(wrapper.type, wrapper.result, wrapper.errorMsg);
+                    wrapper.StartCallback(callback);
                 });
         }
 
         private bool checkResultSuccess(Result result){
             return result.code == Result.RESULT_SUCCESS && !string.IsNullOrEmpty(result.content);
         }
-        
+
         public void EnterGame(){
             var command = new Command.Builder()
                 .Service(COMMON_MODULE_UNITY_BRIDGE_NAME)
@@ -194,6 +195,7 @@ namespace XD.Cn.Common{
                 .CommandBuilder();
             EngineBridge.GetInstance().CallHandler(command);
         }
+
         public void LeaveGame(){
             var command = new Command.Builder()
                 .Service(COMMON_MODULE_UNITY_BRIDGE_NAME)
@@ -202,6 +204,7 @@ namespace XD.Cn.Common{
                 .CommandBuilder();
             EngineBridge.GetInstance().CallHandler(command);
         }
+
         public void GetAntiAddictionAgeRange(Action<AgeRangeType> callback){
             var command = new Command.Builder()
                 .Service(COMMON_MODULE_UNITY_BRIDGE_NAME)
@@ -213,25 +216,52 @@ namespace XD.Cn.Common{
                 if (checkResultSuccess(result)){
                     string str = result.content;
                     AgeRangeType type = AgeRangeType.OtherError;
-                    
+
                     if ("\"-1\"".Equals(str)){
                         type = AgeRangeType.NoRealName;
-                    }else if("\"0\"".Equals(str)){
+                    } else if ("\"0\"".Equals(str)){
                         type = AgeRangeType.Zero2Seven;
-                    }else if("\"8\"".Equals(str)){
+                    } else if ("\"8\"".Equals(str)){
                         type = AgeRangeType.Eight2Fifteen;
-                    }else if("\"16\"".Equals(str)){
+                    } else if ("\"16\"".Equals(str)){
                         type = AgeRangeType.Sixteen2Seventeen;
-                    }else if("\"8\"".Equals(str)){
+                    } else if ("\"8\"".Equals(str)){
                         type = AgeRangeType.EighteenUpper;
                     }
-                    
+
                     callback(type);
-                }else{
+                } else{
                     callback(AgeRangeType.OtherError);
                 }
-               
             });
+        }
+
+        public void ShowLoading(){
+            var command = new Command.Builder()
+                .Service(COMMON_MODULE_UNITY_BRIDGE_NAME)
+                .Method("showLoading")
+                .OnceTime(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command);
+        }
+
+        public void HideLoading(){
+            var command = new Command.Builder()
+                .Service(COMMON_MODULE_UNITY_BRIDGE_NAME)
+                .Method("hideLoading")
+                .OnceTime(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command);
+        }
+
+        public void SetDebugMode(){
+            var command = new Command.Builder()
+                .Service(COMMON_MODULE_UNITY_BRIDGE_NAME)
+                .Method("setDebugMode")
+                .Args("setDebugMode", 1)
+                .OnceTime(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command);
         }
     }
 }

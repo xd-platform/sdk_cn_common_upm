@@ -48,6 +48,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)eventCreateRole;
 
++ (void)showLoading;
++ (void)hideLoading;
+
+
 
 //绑定回调
 + (void)setCallback:(void (^)(NSString *result))callback;

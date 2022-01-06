@@ -6,18 +6,21 @@ using TapTap.Bootstrap;
 namespace XD.Cn.Common{
     [Serializable]
     public class XDCallbackWrapper{
-        public XDCallbackType type;
-        public string result;
+        public int type; //XDCallbackType
+        public Dictionary<string, object> resultDic;
         public string errorMsg;
+
+        private static Action<XDUser> loginCallback;
+        private static Action<XDError> loginErrorCallback;
 
         public XDCallbackWrapper(string json){
             Dictionary<string, object> dic = Json.Deserialize(json) as Dictionary<string, object>;
-            this.type = (XDCallbackType) SafeDictionary.GetValue<int>(dic, "type");
-            this.result = SafeDictionary.GetValue<string>(dic, "result");
+            this.type =  SafeDictionary.GetValue<int>(dic, "type");
+            this.resultDic = SafeDictionary.GetValue<Dictionary<string, object>>(dic, "result");
             this.errorMsg = SafeDictionary.GetValue<string>(dic, "errorMsg");
 
-            if (type == XDCallbackType.InitSuccess){
-                var wrapper = new XDInitResultWrapper(result);
+            if (type == (int)XDCallbackType.InitSuccess){
+                var wrapper = new XDInitResultWrapper(resultDic);
                 if (wrapper.localConfigInfo.tapSdkConfig != null){
                     var info = wrapper.localConfigInfo.tapSdkConfig;
                     var gameChannel = wrapper.localConfigInfo.channel ?? "";
@@ -37,14 +40,45 @@ namespace XD.Cn.Common{
                     TapBootstrap.Init(config);
                     XDTool.Log("TapBootstrap 初始化成功 clientId:= " + info.clientId + " toke:= " + info.clientToken);
                 }
+            }else if (type == (int)LoginCallbackType.LoginSucceed){
+                var userWrapper = new XDUserWrapper(resultDic);
+                if (userWrapper.user != null){
+                    loginCallback(userWrapper.user);
+                } else{
+                    loginErrorCallback(new XDError(-1, "获取用户信息失败"));
+                }
+            }else if (type == (int)LoginCallbackType.LoginFailed){
+                loginErrorCallback(new XDError(-1, errorMsg));
+
+            }else if (type == (int)LoginCallbackType.LoginCancel){ 
+                loginErrorCallback(new XDError(-2, "登录取消"));
+            }
+        }
+
+        public static void SetLoginCallback(Action<XDUser> callback, Action<XDError> errorCallback){
+            loginCallback = callback;
+            loginErrorCallback = errorCallback;
+        }
+
+        public void StartCallback(Action<XDCallbackType, string, string> callback){
+            if (type == (int)LoginCallbackType.LoginSucceed || 
+                type == (int)LoginCallbackType.LoginFailed || 
+                type == (int)LoginCallbackType.LoginCancel){ 
+                //登录不走通用回调
+            } else{
+                callback((XDCallbackType)type, "result", errorMsg);
             }
         }
     }
-    
-    public enum XDCallbackType : int{ //int值要与iOS 安卓对应！
+
+
+    public enum LoginCallbackType : int{
         LoginSucceed = 0,
         LoginFailed = 1,
-        loginCancel = 2,
+        LoginCancel = 2,   
+    }
+    
+    public enum XDCallbackType : int{ //int值要与iOS 安卓对应！
         LogoutSucceed = 3,
         SwitchAccount = 4,
         AgreeProtocol = 5,

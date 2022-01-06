@@ -15,7 +15,7 @@
 #import <XDCommonSDK/XDGShare.h>
 #import <XDCommonSDK/XDUser.h>
 #import <XDCommonSDK/XDGUserDataManager.h>
-#import <XDCommonSDK/XDGAccessToken.h>
+#import <XDCommonSDK/XDAccessToken.h>
 #import <XDCommonSDK/XDGGlobalGame.h>
 #import <XDCommonSDK/XDGTapTapInfo.h>
 #import <XDCommonSDK/XDGGlobalConfigManager.h>

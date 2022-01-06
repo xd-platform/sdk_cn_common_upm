@@ -50,7 +50,7 @@ namespace XD.Cn.Common.Editor{
 
                 //拷贝资源文件,可能拷贝多个模块，这里只有common有资源
                copyResource(target, projPath, proj, parentFolder, "com.xd.cn.common", "Common", 
-                 resourcePath, new[]{"XDGResources.bundle",  "AntiAdictionResources.bundle"});
+                 resourcePath, new[]{"XDResources.bundle",  "AntiAdictionResources.bundle"});
 
                 // 复制Assets的plist到工程目录
                 File.Copy(parentFolder + "/Assets/Plugins" + plistName, resourcePath + plistName);
@@ -217,7 +217,7 @@ namespace XD.Cn.Common.Editor{
             XDScriptHandlerProcessor UnityAppController = new XDScriptHandlerProcessor(unityAppControllerPath);
 
             //在指定代码后面增加一行代码
-            UnityAppController.WriteBelow(@"#import <OpenGLES/ES2/glext.h>", @"#import <XDCommonSDK/XDSDK.h>");
+            UnityAppController.WriteBelow(@"#import <AVFoundation/AVFoundation.h>", @"#import <XDCommonSDK/XDSDK.h>");
             UnityAppController.WriteBelow(@"[KeyboardDelegate Initialize];",
                 @"[XDSDK application:application didFinishLaunchingWithOptions:launchOptions];");
             UnityAppController.WriteBelow(@"AppController_SendNotificationWithArg(kUnityOnOpenURL, notifData);",
@@ -245,7 +245,7 @@ namespace XD.Cn.Common.Editor{
                     }"
                 );
             
-            UnityAppController.WriteBelow(@"return UIInterfaceOrientationMaskAll;",
+            UnityAppController.WriteBelow(@"if ([window rootViewController] == nil)",
                 @" return  [XDSDK application:application supportedInterfaceOrientationsForWindow:window];");
         }
 

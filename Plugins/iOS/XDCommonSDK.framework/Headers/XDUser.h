@@ -1,6 +1,6 @@
 
 #import <Foundation/Foundation.h>
-#import <XDCommonSDK/XDGAccessToken.h>
+#import <XDCommonSDK/XDAccessToken.h>
 #import <XDCommonSDK/XDGEntryType.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -15,6 +15,18 @@ The user's user ID.
 The user's user name.
 */
 @property (nonatomic,copy,readonly) NSString *name;
+
+
+/**
+ The user's nick name.
+ */
+@property (nonatomic,copy,readonly) NSString *nickName;
+
+/**
+ The user's head portrait.
+ */
+@property (nonatomic,copy,readonly) NSString *avatar;
+
 /**
 The user's current loginType. Match rule ： isEqualToString
 */
@@ -31,7 +43,7 @@ The user need push service or not
 /**
 The user's token.
 */
-@property (nonatomic,strong,readonly) XDGAccessToken *token;
+@property (nonatomic,strong,readonly) XDAccessToken *token;
 /// The current user profile
 + (XDUser *)currentUser;
 
@@ -39,18 +51,22 @@ The user's token.
 
 - (instancetype)initWithUserID:(NSString *)userID
                           name:(nullable NSString *)name
+                      nickName:(NSString *)nickName
+                      avatar:(NSString *)avatar
                      loginType:(LoginEntryType)loginType
                boundAccounts:(NSArray *)boundAccounts
-                         token:(XDGAccessToken *)token;
+                         token:(XDAccessToken *)token;
 
 - (instancetype)initWithUserID:(NSString *)userID
                           name:(nullable NSString *)name
+                      nickName:(NSString *)nickName
+                      avatar:(NSString *)avatar
                      loginType:(LoginEntryType)loginType
                  boundAccounts:(NSArray *)boundAccounts
-                         token:(XDGAccessToken *)token
+                         token:(XDAccessToken *)token
              pushServiceEnable:(BOOL)enable;
 
-+ (NSString *)getUserString:(XDUser *)user error:(NSError * _Nullable)error;
++ (NSDictionary *)getUserString:(XDUser *)user error:(NSError * _Nullable)error;
 
 @end
 

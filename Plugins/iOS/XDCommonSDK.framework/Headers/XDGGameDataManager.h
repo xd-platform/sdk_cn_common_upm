@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)setLanguageLocale:(NSInteger)locale;
 
-+ (void)getClientConfigWithCommonParams:(NSMutableDictionary *)params com:(void (^)(BOOL success))handler;
++ (void)getClientConfigWithCommonParams:(NSMutableDictionary *)params com:(void (^)(BOOL success, NSString *msg))handler;
 
 
 /// 是否已经初始化
