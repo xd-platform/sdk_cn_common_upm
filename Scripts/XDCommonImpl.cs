@@ -157,7 +157,8 @@ namespace XD.Cn.Common{
             XDTool.Log("XDSDK eventCreateRole");
         }
 
-        public void InitSDK(string clientID, int orientation){
+        public void InitSDK(string clientID, int orientation,Action<bool> callback){
+            XDCallbackWrapper.initCallback = callback;
             var command = new Command.Builder()
                 .Service(COMMON_MODULE_UNITY_BRIDGE_NAME)
                 .Method("initSDK")
@@ -168,7 +169,7 @@ namespace XD.Cn.Common{
             EngineBridge.GetInstance().CallHandler(command);
         }
 
-        public void SetBridgeCallBack(Action<XDCallbackType, string, string> callback){
+        public void SetBridgeCallBack(Action<XDCallbackType, string> callback){
             var command = new Command.Builder()
                 .Service(COMMON_MODULE_UNITY_BRIDGE_NAME)
                 .Method("setCallback")
@@ -178,8 +179,8 @@ namespace XD.Cn.Common{
             EngineBridge.GetInstance().CallHandler(command,
                 (result) => {
                     XDTool.Log("XDSDK setCallback result: " + result.ToJSON());
-                    var wrapper = new XDCallbackWrapper(result.content);
-                    wrapper.StartCallback(callback);
+                    var mpWrapper = new XDCallbackWrapper(result.content);
+                    mpWrapper.StartCallback(callback);
                 });
         }
 

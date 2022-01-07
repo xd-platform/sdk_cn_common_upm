@@ -42,11 +42,11 @@ namespace XD.Cn.Common{
             XDCommonImpl.GetInstance().EventCreateRole();
         }
 
-        public static void InitSDK(string clientID, int orientation){
-            XDCommonImpl.GetInstance().InitSDK(clientID, orientation);
+        public static void InitSDK(string clientID, int orientation,Action<bool> callback){
+            XDCommonImpl.GetInstance().InitSDK(clientID, orientation, callback);
         }
-
-        public static void SetBridgeCallBack(Action<XDCallbackType, string, string> callback){
+        
+        public static void SetBridgeCallBack(Action<XDCallbackType, string> callback){
             XDCommonImpl.GetInstance().SetBridgeCallBack(callback);
         }
 
