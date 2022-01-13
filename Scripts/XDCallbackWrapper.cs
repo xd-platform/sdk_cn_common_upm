@@ -51,7 +51,7 @@ namespace XD.Cn.Common{
                 if (userWrapper.user != null){
                     loginCallback(userWrapper.user);
                 } else{
-                    loginErrorCallback(new XDError(-1, "获取用户信息失败"));
+                    loginErrorCallback(new XDError(-1, "用户信息解析失败"));
                 }
             } else if (type == (int) InnerCallbackType.LoginFailed){
                 loginErrorCallback(new XDError(-1, errorMsg));

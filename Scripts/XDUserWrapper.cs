@@ -4,14 +4,13 @@ using TapTap.Common;
 
 namespace XD.Cn.Common{
     [Serializable]
-    public class XDUser : BaseModel{
+    public class XDUser{
         public string userId{ get; set; }
         public string avatar{ get; set; }
         public string loginType{ get; set; }
-        public List<string> boundAccounts{ get; set; }
-        public XDAccessToken token{ get; set; }
         public string name{ get; set; }
         public string nickName{ get; set; }
+        public XDAccessToken token{ get; set; }
     }
 
     [Serializable]
@@ -29,9 +28,22 @@ namespace XD.Cn.Common{
 
         public XDUserWrapper(Dictionary<string, object> userDic){
             var dic = SafeDictionary.GetValue<Dictionary<string, object>>(userDic, "user");
-            var userJson = XDTool.GetJson(dic);
-            user = XDTool.GetModel<XDUser>(userJson);
-            if (user == null || string.IsNullOrEmpty(user.userId)){
+            user = new XDUser();
+            user.userId = SafeDictionary.GetValue<string>(dic, "userId");
+            user.avatar = SafeDictionary.GetValue<string>(dic, "avatar");
+            user.loginType = SafeDictionary.GetValue<string>(dic, "loginType");
+            user.name = SafeDictionary.GetValue<string>(dic, "name");
+            user.nickName = SafeDictionary.GetValue<string>(dic, "nickName");
+            
+            var tkDic = SafeDictionary.GetValue<Dictionary<string, object>>(dic, "token");
+            var tkMd = new XDAccessToken();
+            tkMd.kid = SafeDictionary.GetValue<string>(tkDic, "kid");
+            tkMd.tokenType = SafeDictionary.GetValue<string>(tkDic, "tokenType");
+            tkMd.macAlgorithm = SafeDictionary.GetValue<string>(tkDic, "macAlgorithm");
+            tkMd.macKey = SafeDictionary.GetValue<string>(tkDic, "macKey");
+            user.token = tkMd;
+            
+            if (string.IsNullOrEmpty(user.userId)){
                 error = new XDError(-1, "user is null");
                 user = null;
                 XDTool.Log("用户解析是空");

@@ -15,6 +15,5 @@
     "com.taptap.tds.common": "https://github.com/TapTap/TapCommon-Unity.git#3.5.2",
     "com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#3.5.2",
     "com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#3.5.0",
-    "com.unity.nuget.newtonsoft-json": "2.0.2"
   }
 }
