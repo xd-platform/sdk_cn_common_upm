@@ -39,7 +39,7 @@ namespace XD.Cn.Common.Editor{
                 proj.AddFrameworkToProject(unityFrameworkTarget, "Accelerate.framework", false);
 
                 // 添加资源文件，注意文件路径
-                var resourcePath = Path.Combine(path, "XDGResource");
+                var resourcePath = Path.Combine(path, "XDResource");
                 var parentFolder = Directory.GetParent(Application.dataPath)?.FullName;
                 if (Directory.Exists(resourcePath)){
                     Directory.Delete(resourcePath, true);
@@ -50,7 +50,7 @@ namespace XD.Cn.Common.Editor{
 
                 //拷贝资源文件,可能拷贝多个模块，这里只有common有资源
                copyResource(target, projPath, proj, parentFolder, "com.xd.cn.common", "Common", 
-                 resourcePath, new[]{"XDResources.bundle",  "AntiAdictionResources.bundle"});
+                 resourcePath, new[]{"XDResources.bundle"});
 
                 // 复制Assets的plist到工程目录
                 File.Copy(parentFolder + "/Assets/Plugins" + plistName, resourcePath + plistName);
