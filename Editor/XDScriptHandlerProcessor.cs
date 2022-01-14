@@ -26,6 +26,7 @@ namespace XD.Cn.Common.Editor
             string all = streamReader.ReadToEnd();
             // 兼容不同 OS 的 Line Separators
             below = Regex.Replace(below, "\r\n", "\n", RegexOptions.IgnoreCase);
+            all = Regex.Replace(all, "\r\n", "\n", RegexOptions.IgnoreCase);
             streamReader.Close();
             int beginIndex = all.IndexOf(below, StringComparison.Ordinal);
             if (beginIndex == -1)
