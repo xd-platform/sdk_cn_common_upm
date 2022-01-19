@@ -245,7 +245,8 @@ namespace XD.Cn.Common.Editor{
                     }"
                 );
             
-            UnityAppController.WriteBelow(@"if ([window rootViewController] == nil)",
+            UnityAppController.WriteBelow(@"- (NSUInteger)application:(UIApplication*)application supportedInterfaceOrientationsForWindow:(UIWindow*)window
+{",
                 @" return  [XDSDK application:application supportedInterfaceOrientationsForWindow:window];");
         }
 
