@@ -52,7 +52,8 @@ namespace XD.Cn.Common{
     }
     
     public enum LoginType{
-        Default,
+        Default, //自动以上次信息登录
         TapTap,
+        Guest,  //游客
     }
 }
