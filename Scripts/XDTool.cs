@@ -1,3 +1,4 @@
+using System;
 using TapTap.Common;
 using UnityEngine;
 
@@ -10,6 +11,19 @@ namespace XD.Cn.Common{
         
         public static void LogError(string msg){
             Debug.LogError("\n------------------ XDSDK报错 ------------------\n"+msg + "\n\n");
+        }
+        
+        public static bool IsEmpty(string str){
+            if (str == null){
+                return true;
+            }
+            if (String.IsNullOrEmpty(str)){
+                return true;
+            }
+            if (String.IsNullOrWhiteSpace(str)){
+                return true;
+            }
+            return false;
         }
         
         public  static  bool checkResultSuccess(Result result){
