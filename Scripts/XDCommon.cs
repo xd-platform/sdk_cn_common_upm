@@ -73,5 +73,10 @@ namespace XD.Cn.Common{
         public static void SetDebugMode(){
             XDCommonImpl.GetInstance().SetDebugMode();
         }
+        
+        public static void GetDid(Action<string> callback)
+        { 
+            XDCommonImpl.GetInstance().GetDid(callback);
+        }
     }
 }

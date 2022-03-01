@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XDCoreService : NSObject
 + (NSString *)getSDKVersionName;
++ (NSString *)getDid;
 
 + (void)setDebugMode:(NSNumber *)debug;
 

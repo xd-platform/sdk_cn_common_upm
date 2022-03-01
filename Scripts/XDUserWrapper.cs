@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TapTap.Common;
 
 namespace XD.Cn.Common{
@@ -10,6 +11,8 @@ namespace XD.Cn.Common{
         public string loginType{ get; set; }
         public string name{ get; set; }
         public string nickName{ get; set; }
+        
+        public List<string> boundAccounts;
         public XDAccessToken token{ get; set; }
     }
 
@@ -34,6 +37,7 @@ namespace XD.Cn.Common{
             user.loginType = SafeDictionary.GetValue<string>(dic, "loginType");
             user.name = SafeDictionary.GetValue<string>(dic, "name");
             user.nickName = SafeDictionary.GetValue<string>(dic, "nickName");
+            user.boundAccounts = SafeDictionary.GetValue<List<object>>(dic, "boundAccounts").Cast<string>().ToList();
             
             var tkDic = SafeDictionary.GetValue<Dictionary<string, object>>(dic, "token");
             var tkMd = new XDAccessToken();

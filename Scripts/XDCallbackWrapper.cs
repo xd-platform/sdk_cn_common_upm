@@ -49,6 +49,7 @@ namespace XD.Cn.Common{
             } else if (type == (int) InnerCallbackType.LoginSucceed){
                 var userWrapper = new XDUserWrapper(resultDic);
                 if (userWrapper.user != null){
+                    XDTool.SetUserId(userWrapper.user.userId);
                     loginCallback(userWrapper.user);
                 } else{
                     loginErrorCallback(new XDError(-1, "用户信息解析失败"));

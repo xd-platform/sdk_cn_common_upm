@@ -264,5 +264,21 @@ namespace XD.Cn.Common{
                 .CommandBuilder();
             EngineBridge.GetInstance().CallHandler(command);
         }
+        
+        public void GetDid(Action<string> callback){
+            var command = new Command.Builder()
+                .Service(COMMON_MODULE_UNITY_BRIDGE_NAME)
+                .Method("getDid")
+                .Callback(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command, result => {
+                XDTool.Log("===> getDid: " + result.ToJSON());
+                if (!checkResultSuccess(result)){
+                    callback($"getDid Failed:{result.message}");
+                    return;
+                }
+                callback(result.content);
+            });
+        }
     }
 }
