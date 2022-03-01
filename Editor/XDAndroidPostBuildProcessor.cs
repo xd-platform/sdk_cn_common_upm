@@ -32,6 +32,7 @@ public class XDAndroidPostBuildProcessor : IPostGenerateGradleAndroidProject
         writer.WriteLine("org.gradle.jvmargs=-Xmx4096M");
         writer.WriteLine("android.useAndroidX=true");
         writer.WriteLine("android.enableJetifier=true");
+        writer.WriteLine("unityStreamingAssets=.unity3d");
         writer.Flush();
         writer.Close();
     }
