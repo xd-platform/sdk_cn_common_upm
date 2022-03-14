@@ -33,7 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)storeReview;
 
-+ (void)trackUser:(NSString *)userId;
+//trackUser
++ (void)userId:(NSString *)userId;
+
 
 // trackRole
 + (void)serverId:(NSString *)serverId
@@ -41,7 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
         roleName:(NSString *)roleName
            level:(NSNumber *)level;
 
-+ (void)trackEvent:(NSString *)eventName;
+//trackEvent
++ (void)eventName:(NSString *)eventName;
+
 
 + (void)trackAchievement;
 

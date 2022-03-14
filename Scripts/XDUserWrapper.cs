@@ -47,10 +47,10 @@ namespace XD.Cn.Common{
             tkMd.macKey = SafeDictionary.GetValue<string>(tkDic, "macKey");
             user.token = tkMd;
             
-            if (string.IsNullOrEmpty(user.userId)){
+            if (XDTool.IsEmpty(user.userId)){
                 error = new XDError(-1, "user is null");
                 user = null;
-                XDTool.Log("用户解析是空");
+                XDTool.LogError("用户解析是空: user is null");
             } 
         }
     }
