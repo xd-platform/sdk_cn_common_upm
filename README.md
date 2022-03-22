@@ -3,29 +3,36 @@
 ## 1.添加引用
 ```
 //1.upm添加:
-"com.leancloud.realtime": "https://github.com/leancloud/csharp-sdk-upm.git#realtime-0.10.2",
-"com.leancloud.storage": "https://github.com/leancloud/csharp-sdk-upm.git#storage-0.10.2",
-"com.taptap.tds.bootstrap": "https://github.com/TapTap/TapBootstrap-Unity.git#3.6.1",
-"com.taptap.tds.common": "https://github.com/TapTap/TapCommon-Unity.git#3.6.1",
-"com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#3.6.1",
-"com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#3.6.1",
-"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.1.0-beta",
-"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.1.0-beta",
-"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.1.0-beta",
-
+{
+"com.leancloud.realtime": "https://github.com/leancloud/csharp-sdk-upm.git#realtime-0.10.5",
+"com.leancloud.storage": "https://github.com/leancloud/csharp-sdk-upm.git#storage-0.10.5",
+"com.taptap.tds.bootstrap": "https://github.com/TapTap/TapBootstrap-Unity.git#3.6.3",
+"com.taptap.tds.common": "https://github.com/TapTap/TapCommon-Unity.git#3.6.3",
+"com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#3.6.3",
+"com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#3.6.3",
+"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.1.1",
+"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.1.1",
+"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.1.1",
+"com.tapsdk.antiaddiction": "1.2.0",
+},
 //2.也可以使用npm添加，npm需要加如下scopes:
 "scopedRegistries": [
-   {
-     "name": "XD CN SDK",
-     "url": "http://npm.xindong.com",
-     "scopes": [
-       "com.xd.cn"
-     ]
-   }
- ]
+    {
+      "name": "XD CN SDK",
+      "url": "http://npm.xindong.com",
+      "scopes": [
+        "com.xd.cn"
+      ]
+    },
+    {
+      "name": "TapTap",
+      "url": "https://nexus.tapsvc.com/repository/npm-registry/",
+      "scopes": [
+        "com.tapsdk"
+      ]
+    }
+  ]
 ```
-### 1.2 添加防沉迷库
-SDK需要依赖防沉迷库 1.1.0 及以上版本，由于该库还没发布到npm，可以先从 [这里下载添加](https://github.com/xd-platform/xd_sdk_resource/blob/master/Unity_CN/AntiSDK1.1.0.unitypackage) 。
 
 ### 1.3 添加配置文件
 安卓不需要配置文件，iOS需要两个plist配置文件， [这里下载](https://github.com/xd-platform/xd_sdk_resource/tree/master/Unity_CN/Config) 添加到`Assets/Plugins/` 文件下。
