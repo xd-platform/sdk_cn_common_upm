@@ -149,4 +149,4 @@ enum AgeRangeType : int{
         OtherError = -10 //未匹配到
     }
 ```
-# [Change Log](https://github.com/xd-platform/sdk_cn_common_upm/blob/inner_upm/CHANGELOG.md)
+# [Change Log](https://github.com/xd-platform/sdk_cn_common_upm/blob/inner_upm/CHANGLOG.md)
