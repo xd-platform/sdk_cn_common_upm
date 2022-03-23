@@ -33,6 +33,9 @@
     }
   ]
 ```
+1. 防沉迷库需要通过npm引用1.2.0版本的，且删除本地之前添加的AntiSDK文件夹(如果之前有加的话)。
+2. v6.1.1版本开始，内建账号采用本地构建，减少登录过程中的网络请求。在登录成功后，游戏要获取TesUser信息前需要手动调用一下fetch方法【await TDSUser.GetCurrent().Result.Fetch()】
+3. 上面所有的库都可以通过npm方式添加，npm方式需要添加上面的两个scopes。
 
 ### 1.3 添加配置文件
 安卓不需要配置文件，iOS需要两个plist配置文件， [这里下载](https://github.com/xd-platform/xd_sdk_resource/tree/master/Unity_CN/Config) 添加到`Assets/Plugins/` 文件下。
@@ -129,6 +132,7 @@ XDCommon.EnterGame();
 退出登录、进入后台时调用:
 XDCommon.LeaveGame();
 ```
+![防沉迷](https://github.com/xd-platform/xd_sdk_resource/blob/master/Images/anti_time.png)
 
 #### 获取年龄段
 ```
@@ -145,4 +149,4 @@ enum AgeRangeType : int{
         OtherError = -10 //未匹配到
     }
 ```
-
+# [Change Log](https://github.com/xd-platform/sdk_cn_common_upm/blob/inner_upm/CHANGELOG.md)
