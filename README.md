@@ -10,9 +10,9 @@
 "com.taptap.tds.common": "https://github.com/TapTap/TapCommon-Unity.git#3.6.3",
 "com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#3.6.3",
 "com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#3.6.3",
-"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.1.2",
-"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.1.2",
-"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.1.2",
+"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.1.3",
+"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.1.3",
+"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.1.3",
 "com.tapsdk.antiaddiction": "1.2.0",
 },
 //2.也可以使用npm添加，npm需要加如下scopes:
@@ -36,6 +36,7 @@
 1. 防沉迷库需要通过npm引用1.2.0版本的，且删除本地之前添加的AntiSDK文件夹(如果之前有加的话)。
 2. v6.1.1版本开始，内建账号采用本地构建，减少登录过程中的网络请求。在登录成功后，游戏要获取TesUser信息前需要手动调用一下fetch方法【await TDSUser.GetCurrent().Result.Fetch()】
 3. 上面所有的库都可以通过npm方式添加，npm方式需要添加上面的两个scopes。
+4. 推荐登录流程，先LoginByType(Default)自动登录(自动登录: 以上次登录成功的账户继续登录)，如果自动登录是吧，再显示Tap 或 游客登录按钮给用户登录。
 
 ### 1.3 添加配置文件
 安卓不需要配置文件，iOS需要两个plist配置文件， [这里下载](https://github.com/xd-platform/xd_sdk_resource/tree/master/Unity_CN/Config) 添加到`Assets/Plugins/` 文件下。
@@ -149,4 +150,20 @@ enum AgeRangeType : int{
         OtherError = -10 //未匹配到
     }
 ```
-# [Change Log](https://github.com/xd-platform/sdk_cn_common_upm/blob/inner_upm/CHANGLOG.md)
+
+#### 支付宝支付
+```
+XDPayment.AndroidPay(orderIdStr, productId, "roleID", "serverId", "ext",
+(type, message) =>
+{
+XDTool.Log("支付结果:" + type + message);
+});
+AndroidPayResultType{
+        Success = 0,
+        Cancel = 1,
+        Processing = 2,
+        Error = -1,
+    }
+```
+
+# [Change Log](https://github.com/xd-platform/sdk_cn_common_upm/blob/inner_upm/CHANGELOG.md)
