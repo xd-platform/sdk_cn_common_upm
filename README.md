@@ -2,20 +2,20 @@
 
 ## 1.添加引用
 ```
-//1.upm添加:
+//1.添加引用:
 {
+  "dependencies": {
 "com.leancloud.realtime": "https://github.com/leancloud/csharp-sdk-upm.git#realtime-0.10.5",
 "com.leancloud.storage": "https://github.com/leancloud/csharp-sdk-upm.git#storage-0.10.5",
 "com.taptap.tds.bootstrap": "https://github.com/TapTap/TapBootstrap-Unity.git#3.6.3",
 "com.taptap.tds.common": "https://github.com/TapTap/TapCommon-Unity.git#3.6.3",
 "com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#3.6.3",
 "com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#3.6.3",
-"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.1.3",
-"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.1.3",
-"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.1.3",
+"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.2.0",
+"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.2.0",
+"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.2.0",
 "com.tapsdk.antiaddiction": "1.2.0",
 },
-//2.也可以使用npm添加，npm需要加如下scopes:
 "scopedRegistries": [
     {
       "name": "XD CN SDK",
@@ -32,6 +32,7 @@
       ]
     }
   ]
+ }
 ```
 1. 防沉迷库需要通过npm引用1.2.0版本的，且删除本地之前添加的AntiSDK文件夹(如果之前有加的话)。
 2. v6.1.1版本开始，内建账号采用本地构建，减少登录过程中的网络请求。在登录成功后，游戏要获取TesUser信息前需要手动调用一下fetch方法【await TDSUser.GetCurrent().Result.Fetch()】
@@ -165,5 +166,107 @@ AndroidPayResultType{
         Error = -1,
     }
 ```
+## iOS支付
 
+#### iOS 购买商品
+```
+XDPayment.PayWithProduct(orderIdStr, productId, "roleID", "serverId", "ext",
+wrapper =>
+{
+XDTool.Log("支付结果" + JsonUtility.ToJson(wrapper));
+if (wrapper.xdgError != null)
+{
+logText = "支付商品错误 :" + wrapper.xdgError.ToJSON();
+}
+else
+{
+logText = "支付商品结果订单数据: " + JsonUtility.ToJson(wrapper);
+}
+});
+```
+
+#### iOS 商品查询
+```
+ XDPayment.QueryWithProductIds(productIds, info =>
+            {
+                XDTool.Log("查询商品结果" + JsonUtility.ToJson(info));
+                if (info.xdgError != null)
+                {
+                    logText = "查询商品错误：" + info.xdgError.ToJSON();
+                }
+                else
+                {
+                    logText = "查询商品结果：";
+                    foreach (var t in info.skuDetailList)
+                    {
+                        logText += JsonUtility.ToJson(t);
+                    }
+                }
+            });
+```
+
+#### iOS 查看未完成订单
+```
+XDPayment.QueryRestoredPurchases(list =>
+{
+XDTool.Log("未完成订单" + JsonUtility.ToJson(list));
+logText = "未完成订单: ";
+foreach (var t in list)
+{
+logText += JsonUtility.ToJson(t);
+}
+});
+```
+
+#### iOS 获取补单信息
+```
+XDPayment.CheckRefundStatus((wrapper) =>
+{
+XDTool.Log("获取补单列表数据" + JsonUtility.ToJson(wrapper));
+if (wrapper.xdgError != null)
+{
+logText = wrapper.xdgError.error_msg;
+}
+else
+{
+var list = wrapper.refundList;
+if (list != null && list.Count > 0)
+{
+var tempText = "";
+for (var i = 0; i < list.Count; i++)
+{
+tempText += JsonUtility.ToJson(list[i]);
+}
+
+                        logText = "需要补单：" + tempText;
+                    }
+                    else
+                    {
+                        logText = "没有需要补单的单子";
+                    }
+                }
+            });
+```
+
+#### iOS 获取补单信息（带UI）
+```
+ XDPayment.CheckRefundStatusWithUI((wrapper) =>
+            {
+                XDTool.Log("获取补单列表数据" + JsonUtility.ToJson(wrapper));
+                if (wrapper.xdgError != null)
+                {
+                    logText = wrapper.xdgError.error_msg;
+                }else{
+                    var list = wrapper.refundList;
+                    if (list != null && list.Count > 0)
+                    {
+                        logText = "需要补单：" + JsonUtility.ToJson(list);
+                    }
+                    else
+                    {
+                        logText = "没有需要补单的单子";
+                    }
+                }
+            });
+```
 # [Change Log](https://github.com/xd-platform/sdk_cn_common_upm/blob/inner_upm/CHANGELOG.md)

@@ -1,5 +1,16 @@
 # XDSDK Change Log
 
+## v6.2.0 (iOS6.2.0) 
+```
+### iOS Feature
+* 新增Apple IAP
+* 新增防沉迷金额上报
+### iOS BugFix
+* 因防沉迷拦截时不显示 SDK 内部 Toast
+### TapSDK Dependencies
+* (TapCommon、TapBootstrap、TapLogin、TapDB)： **3.6.3**
+```
+
 ## v6.1.3
 ```
 修复安卓隐私协议弹框链接问题
