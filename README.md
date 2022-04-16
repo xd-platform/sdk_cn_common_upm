@@ -269,4 +269,13 @@ tempText += JsonUtility.ToJson(list[i]);
                 }
             });
 ```
+
+
+## 打点
+```
+  XDCommon.TrackUser(string userId);  //即TapDB.setUser(id)  ，跟踪用户
+  XDCommon.TrackEvent(string eventName); //事件埋点
+  XDCommon.TrackAchievement(); //完成成就
+  XDCommon.TrackRole(string serverId, string roleId, string roleName, int level); //跟踪角色
+```
 # [Change Log](https://github.com/xd-platform/sdk_cn_common_upm/blob/inner_upm/CHANGELOG.md)
