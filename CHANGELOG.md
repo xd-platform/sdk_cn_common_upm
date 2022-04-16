@@ -1,4 +1,8 @@
 # XDSDK Change Log
+## v6.3.0-rc (iOS6.2.0 - Android 6.2.0)
+```
+安卓网页支付 (Ping++ 微信/支付宝支付)
+```
 
 ## v6.2.0 (iOS6.2.0) 
 ```
