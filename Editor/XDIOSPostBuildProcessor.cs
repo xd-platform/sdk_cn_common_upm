@@ -217,7 +217,7 @@ namespace XD.Cn.Common.Editor{
             XDScriptHandlerProcessor UnityAppController = new XDScriptHandlerProcessor(unityAppControllerPath);
 
             //在指定代码后面增加一行代码
-            UnityAppController.WriteBelow(@"#import <AVFoundation/AVFoundation.h>", @"#import <XDCommonSDK/XDSDK.h>");
+            UnityAppController.WriteBelow(@"#include <assert.h>", @"#import <XDCommonSDK/XDSDK.h>");
             UnityAppController.WriteBelow(@"[KeyboardDelegate Initialize];",
                 @"[XDSDK application:application didFinishLaunchingWithOptions:launchOptions];");
             UnityAppController.WriteBelow(@"AppController_SendNotificationWithArg(kUnityOnOpenURL, notifData);",

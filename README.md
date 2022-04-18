@@ -11,9 +11,9 @@
 "com.taptap.tds.common": "https://github.com/TapTap/TapCommon-Unity.git#3.6.3",
 "com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#3.6.3",
 "com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#3.6.3",
-"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.3.0-rc",
-"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.3.0-rc",
-"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.3.0-rc",
+"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.2.1",
+"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.2.1",
+"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.2.1",
 "com.tapsdk.antiaddiction": "1.2.0",
 },
 "scopedRegistries": [
@@ -154,17 +154,17 @@ enum AgeRangeType : int{
 
 #### 安卓网页支付
 ```
- XDPayment.AndroidPay(orderIdStr, productId, productId, price, xdRoleId, xdServerId, "ext",
+ XDPayment.AndroidPay(orderId, productId, productName, price, RoleId, ServerId, ext,
                 (type, message) =>
                 {
                     XDTool.Log("支付结果:" + type + message);
                     logText = "支付结果:" + type + message;
                 });
 AndroidPayResultType{
-        Success = 0,
-        Cancel = 1,
-        Processing = 2,
-        Error = -1,
+        OK = 0,  //支付完成
+        Cancel = 1, //支付取消
+        Processing = 2, //处理中
+        Error = -1, //失败，message 失败信息
     }
 ```
 ## iOS支付
