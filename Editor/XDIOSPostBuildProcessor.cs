@@ -244,10 +244,6 @@ namespace XD.Cn.Common.Editor{
                          [XDSDK scene:scene continueUserActivity:userActivity];
                     }"
                 );
-            
-            UnityAppController.WriteBelow(@"- (NSUInteger)application:(UIApplication*)application supportedInterfaceOrientationsForWindow:(UIWindow*)window
-{",
-                @" return  [XDSDK application:application supportedInterfaceOrientationsForWindow:window];");
         }
 
         private static bool CheckoutUniversalLinkHolder(string filePath, string below){

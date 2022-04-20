@@ -1,5 +1,16 @@
 # XDSDK Change Log
 
+## v6.2.2-rc (iOS6.2.0 - Android 6.2.1)
+```
+安卓网页支付优化版：
+* 网页支付样式优化
+* 网页加载超时时间改为 5 秒
+
+* (TapCommon、TapBootstrap、TapLogin、TapDB): **3.6.3**
+* (AntiAddiction、AntiAddictionUI): **1.2.0**
+
+```
+
 ## v6.2.1 (iOS6.2.0 - Android 6.2.0)
 ```
 安卓网页支付 (Ping++ 微信/支付宝支付)

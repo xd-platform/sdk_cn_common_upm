@@ -22,7 +22,7 @@ namespace XD.Cn.Common{
         }
         
         private static void Print(string msg){
-            Debug.LogError("\n------------------ XDGSDK报错 ------------------\n" + msg + "\n\n");
+            Debug.LogError("\n------------------ XDSDK报错 ------------------\n" + msg + "\n\n");
         }
 
         public static void SetUserId(String userId){
