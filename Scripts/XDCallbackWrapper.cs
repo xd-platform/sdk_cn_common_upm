@@ -9,12 +9,14 @@ namespace XD.Cn.Common{
         public int type; //XDCallbackType
         public Dictionary<string, object> resultDic;
         public string errorMsg;
+        private string resultJson;
 
         public static Action<XDUser> loginCallback;
         public static Action<XDError> loginErrorCallback;
         public static Action<bool> initCallback;
 
         public XDCallbackWrapper(string json){
+            resultJson = json;
             Dictionary<string, object> dic = Json.Deserialize(json) as Dictionary<string, object>;
             this.type = SafeDictionary.GetValue<int>(dic, "type");
             this.resultDic = SafeDictionary.GetValue<Dictionary<string, object>>(dic, "result");
@@ -45,6 +47,7 @@ namespace XD.Cn.Common{
                     XDTool.Log("TapBootstrap 初始化成功 clientId:= " + info.clientId + " toke:= " + info.clientToken);
                 } else{
                     initCallback(false);
+                    XDTool.LogError("初始化失败callback：" + resultJson);
                 }
             } else if (type == (int) InnerCallbackType.LoginSucceed){
                 var userWrapper = new XDUserWrapper(resultDic);
@@ -56,12 +59,14 @@ namespace XD.Cn.Common{
                 }
             } else if (type == (int) InnerCallbackType.LoginFailed){
                 loginErrorCallback(new XDError(-1, errorMsg));
+                XDTool.LogError("登录化失败callback：" + resultJson);
                 
             } else if (type == (int) InnerCallbackType.LoginCancel){
                 loginErrorCallback(new XDError(-2, "登录取消"));
                 
             } else if (type == (int) InnerCallbackType.InitFail){
                 initCallback(false);
+                XDTool.LogError("初始化失败callback：" + resultJson);
                 
             } else{ //其他回调
                 callback((XDCallbackType) type, errorMsg);
