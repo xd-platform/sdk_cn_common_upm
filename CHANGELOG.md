@@ -1,5 +1,10 @@
 # XDSDK Change Log
 
+## v6.2.4 (iOS6.2.0 - Android 6.2.4)
+```
+增加Android注销
+```
+
 ## v6.2.3 (iOS6.2.0 - Android 6.2.1)
 ```
 增加iOS注销

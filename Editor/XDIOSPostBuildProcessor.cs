@@ -232,9 +232,6 @@ namespace XD.Cn.Common.Editor{
                     @"-(BOOL) application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{[XDSDK application:application continueUserActivity:userActivity restorationHandler:restorationHandler];return YES;}");
             }
 
-            UnityAppController.WriteBelow(@"handler(UIBackgroundFetchResultNoData);",
-                @"[XDSDK application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];");
-            
             UnityAppController.WriteBelow(@"- (void)preStartUnity               {}",
                 @"- (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts API_AVAILABLE(ios(13.0)){
                         [XDSDK scene:scene openURLContexts:URLContexts];

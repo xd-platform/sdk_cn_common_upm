@@ -69,6 +69,9 @@ namespace XD.Cn.Common{
                 XDTool.LogError("初始化失败callback：" + resultJson);
                 
             } else{ //其他回调
+                if (type == (int)XDCallbackType.LogoutSucceed){
+                    TDSUser.Logout();
+                }
                 callback((XDCallbackType) type, errorMsg);
             }
         }
