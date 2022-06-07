@@ -10,43 +10,43 @@ using UnityEditor.Android;
 using UnityEngine;
 using XD.Cn.Common.Editor;
 
-public class XDAndroidPostBuildProcessor : IPostGenerateGradleAndroidProject
-{
-    public int callbackOrder
-    {
-        get { return 999; }
+public class XDAndroidPostBuildProcessor : IPostGenerateGradleAndroidProject{
+    public int callbackOrder{
+        get{ return 999; }
     }
 
-    public static void GenerateAndroidX(string path)
-    {
+    public static void GenerateAndroidX(string path){
         string gradlePropertiesFile = path + "/gradle.properties";
 
         Debug.Log($"GradleProperties File:{gradlePropertiesFile}");
 
-        if (File.Exists(gradlePropertiesFile))
-        {
-            File.Delete(gradlePropertiesFile);
-        }
+        // if (File.Exists(gradlePropertiesFile))
+        // {
+        //     File.Delete(gradlePropertiesFile);
+        // }
+        // StreamWriter writer = File.CreateText(gradlePropertiesFile);
+        // writer.WriteLine("org.gradle.jvmargs=-Xmx4096M");
+        // writer.WriteLine("android.useAndroidX=true");
+        // writer.WriteLine("android.enableJetifier=true");
+        // writer.WriteLine("unityStreamingAssets=.unity3d");
+        // writer.Flush();
+        // writer.Close();
 
-        StreamWriter writer = File.CreateText(gradlePropertiesFile);
-        writer.WriteLine("org.gradle.jvmargs=-Xmx4096M");
-        writer.WriteLine("android.useAndroidX=true");
-        writer.WriteLine("android.enableJetifier=true");
-        writer.WriteLine("unityStreamingAssets=.unity3d");
-        writer.Flush();
-        writer.Close();
+        if (File.Exists(gradlePropertiesFile)){
+            XDScriptHandlerProcessor writeHelper = new XDScriptHandlerProcessor(gradlePropertiesFile);
+            writeHelper.WriteBelow(@"org.gradle.jvmargs=-Xmx4096M", @"
+android.useAndroidX=true
+android.enableJetifier=true");
+        }
     }
 
-    public static bool GeneratedAndroidGradle(string projectPath)
-    {
-        if (!Directory.Exists(projectPath + "/launcher"))
-        {
+    public static bool GeneratedAndroidGradle(string projectPath){
+        if (!Directory.Exists(projectPath + "/launcher")){
             Debug.Log($"XDG can't find {projectPath}/launcher");
 
             string targetGradlePath = projectPath + "/build.gradle";
 
-            if (File.Exists(targetGradlePath))
-            {
+            if (File.Exists(targetGradlePath)){
                 XD.Cn.Common.Editor.XDScriptHandlerProcessor writeHelper =
                     new XD.Cn.Common.Editor.XDScriptHandlerProcessor(targetGradlePath);
 
@@ -57,9 +57,7 @@ public class XDAndroidPostBuildProcessor : IPostGenerateGradleAndroidProject
                 implementation 'androidx.appcompat:appcompat:1.3.1'
                  ");
                 return true;
-            }
-            else
-            {
+            } else{
                 Debug.LogError("TDSGlobal can't find Android Gradle File!");
                 return false;
             }
@@ -68,26 +66,21 @@ public class XDAndroidPostBuildProcessor : IPostGenerateGradleAndroidProject
         return false;
     }
 
-    void IPostGenerateGradleAndroidProject.OnPostGenerateGradleAndroidProject(string path)
-    {
+    void IPostGenerateGradleAndroidProject.OnPostGenerateGradleAndroidProject(string path){
         GenerateAndroidX(path);
 
         string projectPath = path;
 
-        if (path.Contains("unityLibrary"))
-        {
+        if (path.Contains("unityLibrary")){
             projectPath = path.Substring(0, path.Length - 12);
             GenerateAndroidX(projectPath);
-        }
-        else
-        {
+        } else{
             GenerateAndroidX(path);
         }
 
         Debug.Log($"Project path:{path},substring path:{projectPath}");
 
-        if (GeneratedAndroidGradle(projectPath))
-        {
+        if (GeneratedAndroidGradle(projectPath)){
             return;
         }
 
@@ -97,8 +90,7 @@ public class XDAndroidPostBuildProcessor : IPostGenerateGradleAndroidProject
 
         string unityLibraryGradle = projectPath + "/unityLibrary/build.gradle";
 
-        if (File.Exists(launcherGradle))
-        {
+        if (File.Exists(launcherGradle)){
             Debug.Log("write launch gradle");
 
             XD.Cn.Common.Editor.XDScriptHandlerProcessor writerHelper =
@@ -106,11 +98,9 @@ public class XDAndroidPostBuildProcessor : IPostGenerateGradleAndroidProject
             writerHelper.WriteBelow(@"implementation project(':unityLibrary')", @"
                 
             ");
-          
         }
 
-        if (File.Exists(baseProjectGradle))
-        {
+        if (File.Exists(baseProjectGradle)){
             Debug.Log("write project gradle");
             XD.Cn.Common.Editor.XDScriptHandlerProcessor writerHelper =
                 new XD.Cn.Common.Editor.XDScriptHandlerProcessor(baseProjectGradle);
@@ -124,8 +114,7 @@ public class XDAndroidPostBuildProcessor : IPostGenerateGradleAndroidProject
 }");
         }
 
-        if (File.Exists(unityLibraryGradle))
-        {
+        if (File.Exists(unityLibraryGradle)){
             XD.Cn.Common.Editor.XDScriptHandlerProcessor writerHelper =
                 new XD.Cn.Common.Editor.XDScriptHandlerProcessor(unityLibraryGradle);
             writerHelper.WriteBelow(@"implementation fileTree(dir: 'libs', include: ['*.jar'])", @"
