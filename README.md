@@ -14,7 +14,7 @@
 "com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.2.4",
 "com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.2.4",
 "com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.2.4",
-"com.tapsdk.antiaddiction": "1.2.0",
+"com.tapsdk.antiaddiction":"https://github.com/taptap/TapAntiAddiction-Unity.git#1.2.0"
 },
 "scopedRegistries": [
     {
@@ -28,7 +28,8 @@
       "name": "TapTap",
       "url": "https://nexus.tapsvc.com/repository/npm-registry/",
       "scopes": [
-        "com.tapsdk"
+        "com.tapsdk",
+        "com.taptap"
       ]
     }
   ]
@@ -46,7 +47,8 @@
 
 ## 2.接口使用
 #### 绑定回调
-使用sdk前需先绑定回调
+1.使用sdk前需先绑定回调
+2.在LogoutSucceed 和SwitchAccount 回调里，游戏要处理跳转到登录页面的逻辑
 ```
  XDCommon.SetBridgeCallBack((type, msg) => {
                 logText = "回调： " + type;
@@ -81,18 +83,12 @@ XDCommon.IsInitialized(b => { logText = b ? "已经初始化" : "未初始化"; 
 XDCommon.GetSDKVersionName((result) => { logText = "版本号：" + result; });
 ```
 
-#### 自带登录弹框的登录
-```
- XDAccount.Login(user => {
-                logText = "登录成功 userId：" + user.userId + "  kid: " + user.token.kid;
-            },(error => {
-                logText = "登录失败：" + error.error_msg;
-            }));
-```
-
 #### 单点登录
 ```
+1.推荐登录流程，先LoginByType(Default)自动登录(自动登录: 以上次登录成功的账户继续登录)，如果自动登录失败，再显示Tap 或 游客登录按钮给用户登录。
+2.登录成功后 调用 XDCommon.TrackUser(string userId);  //即TapDB.setUser(id)  跟踪用户
   XDAccount.LoginByType(LoginType.Default, user => {
+                XDCommon.TrackUser(user.userId);
                 logText = "成功：" + user.name;
             },(error => {
                 logText = "失败：" + error.error_msg;
@@ -103,6 +99,17 @@ enum LoginType{
         TapTap,  //TapTap登录
         Guest,  //游客登录
     }           
+```
+
+#### 自带登录弹框的登录
+```
+1.登录成功后 调用 XDCommon.TrackUser(string userId);  //即TapDB.setUser(id)  ，跟踪用户
+ XDAccount.Login(user => {
+                 XDCommon.TrackUser(user.userId);
+                logText = "登录成功 userId：" + user.userId + "  kid: " + user.token.kid;
+            },(error => {
+                logText = "登录失败：" + error.error_msg;
+            }));
 ```
 
 #### 退出登录
