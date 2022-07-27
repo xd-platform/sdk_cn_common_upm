@@ -10,9 +10,9 @@
 "com.taptap.tds.common": "https://github.com/TapTap/TapCommon-Unity.git#3.6.3",
 "com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#3.6.3",
 "com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#3.6.3",
-"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.1.3",
-"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.1.3",
-"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.1.3",
+"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.1.4",
+"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.1.4",
+"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.1.4",
 "com.tapsdk.antiaddiction": "1.2.0",
 },
 //2.也可以使用npm添加，npm需要加如下scopes:
