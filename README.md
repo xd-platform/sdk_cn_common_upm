@@ -5,16 +5,16 @@
 //1.添加引用:
 {
   "dependencies": {
-"com.leancloud.realtime": "https://github.com/leancloud/csharp-sdk-upm.git#realtime-0.10.5",
-"com.leancloud.storage": "https://github.com/leancloud/csharp-sdk-upm.git#storage-0.10.5",
-"com.taptap.tds.bootstrap": "https://github.com/TapTap/TapBootstrap-Unity.git#3.6.3",
-"com.taptap.tds.common": "https://github.com/TapTap/TapCommon-Unity.git#3.6.3",
-"com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#3.6.3",
-"com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#3.6.3",
-"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.2.4",
-"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.2.4",
-"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.2.4",
-"com.tapsdk.antiaddiction":"https://github.com/taptap/TapAntiAddiction-Unity.git#1.2.0"
+"com.leancloud.realtime": "https://github.com/leancloud/csharp-sdk-upm.git#realtime-0.10.14",
+"com.leancloud.storage": "https://github.com/leancloud/csharp-sdk-upm.git#storage-0.10.14",
+"com.taptap.tds.bootstrap": "https://github.com/TapTap/TapBootstrap-Unity.git#3.11.1",
+"com.taptap.tds.common": "https://github.com/TapTap/TapCommon-Unity.git#3.11.1",
+"com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#3.11.1",
+"com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#3.11.1",
+"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.2.5",
+"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.2.5",
+"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.2.5",
+"com.tapsdk.antiaddiction":"https://github.com/taptap/TapAntiAddiction-Unity.git#3.9.0"
 },
 "scopedRegistries": [
     {

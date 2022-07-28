@@ -22,7 +22,7 @@
 #import <XDCommonSDK/XDwxdelegate.h>
 #import <TDSGlobalSDKCommonKit/UILabel+XDLabTools.h>
 
-#define XDGSDK_VERSION @"6.2.0"
+#define XDGSDK_VERSION @"6.2.5"
 #define TDSGLOBALSDK_NAME @"XD-CN-SDK"
 
 

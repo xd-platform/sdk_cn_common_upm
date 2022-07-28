@@ -1,5 +1,12 @@
 # XDSDK Change Log
 
+## v6.2.5
+```
+修复Android人中心刘海屏适配的问题
+修复iOS头像问题
+修复iOS notify token重置问题
+```
+
 ## v6.2.4 (iOS6.2.0 - Android 6.2.4)
 ```
 增加Android注销
