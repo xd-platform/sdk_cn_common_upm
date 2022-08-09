@@ -11,9 +11,9 @@
 "com.taptap.tds.common": "https://github.com/TapTap/TapCommon-Unity.git#3.11.1",
 "com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#3.11.1",
 "com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#3.11.1",
-"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.2.5",
-"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.2.5",
-"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.2.5",
+"com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.2.6",
+"com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.2.6",
+"com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.2.6",
 "com.tapsdk.antiaddiction":"https://github.com/taptap/TapAntiAddiction-Unity.git#3.9.0"
 },
 "scopedRegistries": [

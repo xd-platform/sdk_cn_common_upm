@@ -1,5 +1,10 @@
 # XDSDK Change Log
 
+## v6.2.6
+```
+修复Android隐私合规问题
+```
+
 ## v6.2.5
 ```
 修复Android人中心刘海屏适配的问题
