@@ -14,7 +14,7 @@
 "com.xd.cn.common": "https://github.com/xd-platform/sdk_cn_common_upm.git#6.2.6",
 "com.xd.cn.account": "https://github.com/xd-platform/sdk_cn_account_upm.git#6.2.6",
 "com.xd.cn.payment": "https://github.com/xd-platform/sdk_cn_payment_upm.git#6.2.6",
-"com.tapsdk.antiaddiction":"https://github.com/taptap/TapAntiAddiction-Unity.git#3.9.0"
+"com.tapsdk.antiaddiction":"https://github.com/taptap/TapAntiAddiction-Unity.git#3.12.1"  //必须这个版本！
 },
 "scopedRegistries": [
     {
